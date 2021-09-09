@@ -30,6 +30,7 @@ runs:
       with:
         ruby-version: 3.0.2
         bundler-cache: true
+        cache-version: deposit-pull-request
         bundler: Gemfile.lock
         working-directory: ${{ github.action_path }}
     - name: Create pull request
