@@ -2,11 +2,6 @@
 
 This action opens a pull request for an accepted paper and optionally merges it
 
-
-# Open Journals :: Upload crossref.xml file
-
-This action adds a crossref.xml file to a paper branch in the corresponding Open Journal's papers repository
-
 ## Usage
 
 Usually this action is used as a step in a workflow after paper's branch including the needed files is created.
