@@ -1,0 +1,53 @@
+name: Deposit Pull Request
+description: Creates the accepted paper pull request
+inputs:
+  papers_repo:
+    description: The repository containing the published and submitted papers
+    required: true
+  issue_id:
+    description: The issue number of the submission
+    required: true
+  bot_token:
+    description: The access token to be used to upload files
+    required: true
+  branch_prefix:
+    description: The prefix to add to the name of all branches
+    required: false
+    default: ""
+  mode:
+    description: 'dry-run' or 'deposit' (deposit mode will merge the PR and delete the paper's branch)
+    required: false
+    default: "dry-run"
+outputs:
+  pr_url:
+    description: "URL of the pull request"
+    value: ${{ steps.deposit_pr_creator.outputs.pr_url }}
+runs:
+  using: "composite"
+  steps:
+    - name: Install Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.0.2
+        bundler-cache: true
+        bundler: Gemfile.lock
+        working-directory: ${{ github.action_path }}
+    - name: Create pull request
+      id: deposit_pr_creator
+      shell: bash
+      env:
+        PAPERS_REPO: ${{ inputs.papers_repo }}
+        BRANCH_PREFIX: ${{ inputs.branch_prefix }}
+        ISSUE_ID: ${{ inputs.issue_id }}
+        BOT_TOKEN: ${{ inputs.bot_token }}
+        MODE: ${{ inputs.mode }}
+      run: |
+        ruby ${{ github.action_path }}/deposit_pr.rb
+    - name: Print results
+      shell: bash
+      run: |
+        echo "Pull request for the paper: ${{ steps.deposit_pr_creator.outputs.pr_url }}"
+
+branding:
+  icon: git-merge
+  color: green
