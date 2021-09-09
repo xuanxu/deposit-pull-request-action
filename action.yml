@@ -15,7 +15,7 @@ inputs:
     required: false
     default: ""
   mode:
-    description: 'dry-run' or 'deposit' (deposit mode will merge the PR and delete the paper's branch)
+    description: "'dry-run' or 'deposit' (deposit mode will merge the PR and delete the paper's branch)"
     required: false
     default: "dry-run"
 outputs:
