@@ -24,8 +24,8 @@ gh_response = github_client.create_pull_request(papers_repo, "main", "#{branch}"
 
 if mode == "deposit"
   sleep(5)
-  github_client.merge_pull_request(papers_repo, gh_response.number, "Merging")
+  github_client.merge_pull_request(papers_repo, gh_response.number, "Merging automatically")
   github_client.delete_ref(papers_repo, "heads/#{branch}")
 end
 
-system("echo '::set-output name=pr_url::#{gh_response.content.html_url}'")
+system("echo '::set-output name=pr_url::#{gh_response.html_url}'")
