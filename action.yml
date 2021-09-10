@@ -42,8 +42,9 @@ runs:
         ISSUE_ID: ${{ inputs.issue_id }}
         BOT_TOKEN: ${{ inputs.bot_token }}
         MODE: ${{ inputs.mode }}
+        BUNDLE_GEMFILE: ${{ github.action_path }}/Gemfile
       run: |
-        ruby ${{ github.action_path }}/deposit_pr.rb
+        bundle exec ruby ${{ github.action_path }}/deposit_pr.rb
     - name: Print results
       shell: bash
       run: |
