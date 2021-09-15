@@ -19,3 +19,28 @@ The action accepts the following inputs:
 ### Outputs
 
 - **pr_url**: The URL for the created pull request
+
+### Example
+
+Use it adding it as a step in a workflow `.yml` file in your repo's `.github/workflows/` directory and passing your custom input values:
+
+````yaml
+on:
+  workflow_dispatch:
+   inputs:
+      issue_id:
+        description: 'The issue number of the submission'
+jobs:
+  processing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Open Pull Request
+        id: open-pr
+        uses: xuanxu/deposit-pull-request-action@main
+        with:
+          papers_repo: myorg/myjournal-papers
+          branch_prefix: myjournal
+          issue_id: ${{ github.event.inputs.issue_id }}
+          bot_token: ${{ secrets.BOT_ACCESS_TOKEN }}
+          mode: dry-run
+```
