@@ -24,7 +24,7 @@ The action accepts the following inputs:
 
 Use it adding it as a step in a workflow `.yml` file in your repo's `.github/workflows/` directory and passing your custom input values:
 
-````yaml
+```yaml
 on:
   workflow_dispatch:
    inputs:
