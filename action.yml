@@ -28,7 +28,7 @@ runs:
     - name: Install Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.0.2
+        ruby-version: 3.0.3
         bundler-cache: true
         cache-version: deposit-pull-request
         bundler: Gemfile.lock
