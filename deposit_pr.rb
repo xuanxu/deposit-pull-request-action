@@ -12,14 +12,14 @@ end
 
 issue_id = ENV["ISSUE_ID"]
 papers_repo = ENV["PAPERS_REPO"]
+papers_repo_main_banch = ENV["PAPERS_REPO_MAIN_BRANCH"] || "main"
 branch_prefix = ENV["BRANCH_PREFIX"]
 mode = ENV["MODE"].to_s.downcase == "deposit" ? "deposit" : "dry-run"
 
 id = "%05d" % issue_id
 branch = branch_prefix.empty? ? id.to_s : "#{branch_prefix}.#{id}"
-crossref_xml_uploaded_path = "#{branch}/10.21105.#{branch}.crossref.xml"
 
-gh_response = github_client.create_pull_request(papers_repo, "main", "#{branch}",
+gh_response = github_client.create_pull_request(papers_repo, papers_repo_main_banch, "#{branch}",
   "Creating pull request for 10.21105.#{branch}", "If this looks good then :shipit:")
 
 if mode == "deposit"
