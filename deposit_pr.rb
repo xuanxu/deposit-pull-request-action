@@ -1,7 +1,8 @@
 require "octokit"
 
 def gh_token
-  gh_token_from_env = (ENV['BOT_TOKEN'] || ENV['GH_ACCESS_TOKEN']).to_s.strip
+  gh_token_from_env = ENV['BOT_TOKEN'].to_s.strip
+  gh_token_from_env = ENV['GH_ACCESS_TOKEN'].to_s.strip if gh_token_from_env.empty?
   raise "!! ERROR: Invalid GitHub Token" if gh_token_from_env.empty?
   gh_token_from_env
 end
