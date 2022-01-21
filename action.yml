@@ -9,7 +9,7 @@ inputs:
     required: true
   bot_token:
     description: The access token to be used to upload files
-    required: true
+    required: false
   papers_repo_main_branch:
     description: The name of the repo's main branch to issue the pull request against
     required: false

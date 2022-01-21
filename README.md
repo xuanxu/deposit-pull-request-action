@@ -12,10 +12,10 @@ The action accepts the following inputs:
 
 - **papers_repo**: Required. The repository containing the published and submitted papers in `owner/reponame` format.
 - **issue_id**: Required. The issue number of the submission of the paper.
-- **bot_token**: Required. The access token to be used to upload files, usually a bot account.
 - **papers_repo_main_branch**: Optional. The name of the repo's main branch to issue the pull request against. Default: `main`.
 - **branch_prefix**: Optional. The prefix of the name of the paper's branch.
 - **mode**: Optional. Valid values: [`dry-run`, `deposit`]. If `mode=deposit`, the PR will be merged and the topic branch deleted. Default: `dry-run`.
+- **bot_token**: Optional. The GitHub access token to be used to upload files. Default: `ENV['GH_ACCESS_TOKEN']`
 
 ### Outputs
 
