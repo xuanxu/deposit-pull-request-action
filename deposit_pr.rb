@@ -29,4 +29,4 @@ if mode == "deposit"
   github_client.delete_ref(papers_repo, "heads/#{branch}")
 end
 
-system("echo '::set-output name=pr_url::#{gh_response.html_url}'")
+system("echo 'pr_url=#{gh_response.html_url}' >> $GITHUB_OUTPUT")
